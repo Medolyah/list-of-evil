@@ -1,0 +1,7 @@
+{
+  "name": "boese",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
