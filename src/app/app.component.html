@@ -1,3 +1,18 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content color="primary">
+        <ion-item  color="primary" lines="none">
+        <ion-label><h1>SchurkenTM</h1></ion-label>
+      </ion-item>
+          <ion-menu-toggle color="primary">
+            <ion-item color="primary" href="/evil" detail="false">
+              <ion-icon color="secondary" slot="start" name="accessibility-outline"></ion-icon>
+              <ion-label>Schurken</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

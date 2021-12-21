@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="evil"></ion-back-button>
+            <ion-title>{{model?.name}}</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card *ngIf="showError" color="info" lines="none">
+        <ion-card-content>
+        Entschuldigung. Sieht so aus als wäre dieser Platz hier frei von Bösewichten.
+    </ion-card-content>
+    </ion-card>
+        <div *ngIf="!showError && model">
+            <ion-img class="image-crop"
+                [src]="model.img" class="ion-padding-bottom">
+            </ion-img>
+ 
+        <ion-item-divider>
+            <ion-label>
+                Bio
+            </ion-label>
+        </ion-item-divider>
+        <ion-item lines="none">
+            <ion-text color="medium" class="ion-text-justify">
+                <p>{{model.bio}}
+                </p>
+            </ion-text>
+        </ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-item lines="none">
+                        <ion-icon name="planet-outline" slot="start" color="medium"></ion-icon>
+                        <ion-label color="medium">{{model.planet}}</ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item lines="none">
+                        <ion-icon name="calendar-outline" slot="start" color="medium"></ion-icon>
+                        <ion-label color="medium">{{model.birthday | date: "dd.MM.yyyy"}}</ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <a href="" (click)="openLink(model.website)">
+                        <ion-item lines="none">
+                            <ion-icon slot="start" name="globe-outline" color="medium"></ion-icon>
+                            <ion-label color="medium">{{model.website_name}}</ion-label>
+                        </ion-item>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <ion-item lines="none">
+                        <ion-icon name="transgender-outline" slot="start" color="medium"></ion-icon>
+                        <ion-label color="medium">{{model.gender}}</ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-item-divider>
+            <ion-label>
+                Stats
+            </ion-label>
+        </ion-item-divider>
+
+        <ion-list>
+            <ion-item>
+                <ion-icon color="success" slot="start" name="medkit"></ion-icon>
+                <ion-label color="medium">{{model.health}} KP</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="beaker" color="info" slot="start"></ion-icon>
+                <ion-label color="medium">{{model.mana}} MP</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="barbell" color="secondary" slot="start"></ion-icon>
+                <ion-label color="medium">{{model.strength}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="shield" color="warning" slot="start"></ion-icon>
+                <ion-label color="medium">{{model.defense}}</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-item lines="none" class="ion-padding-bottom">
+            <ion-label color="medium" position="stacked">Bösigkeitslevel</ion-label>
+            <ion-progress-bar [color]="model.evil_level_color" [value]="model.evil_level"></ion-progress-bar>
+        </ion-item>
+    </div>
+</ion-content>
